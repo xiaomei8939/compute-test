@@ -19,4 +19,5 @@ jobs:
         run: |
           ffmpeg -version | head -1
           ffmpeg -v error -f lavfi -i testsrc2=duration=60:size=1920x1080:rate=30 -c:v libx264 -preset medium -crf 23 src.mp4
-          ffmpeg -i src.mp4 -t 30 -c:v libx264 -preset medium -crf 23 -an -benchmark out.mp4 2>&1 | tail -6
+          echo "--- timed encode of 30s 1080p, x264 medium ---"
+          time ffmpeg -i src.mp4 -t 30 -c:v libx264 -preset medium -crf 23 -an out.mp4 2>&1 | grep -E "time=|speed" | tail -2
