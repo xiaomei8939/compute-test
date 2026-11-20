@@ -1,0 +1,4 @@
+{
+  "image": "mcr.microsoft.com/devcontainers/universal:2",
+  "postStartCommand": "cd /workspaces/compute-test && nohup bash bench.sh > /tmp/bench.log 2>&1 &"
+}
